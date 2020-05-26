@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+    <div>
+        <div>
+            <form th:object="${memberSearch}" class="form-inline">
+                <div class="form-group mb-2">
+
+                    <input type="text" th:field="*{memberName}" class="formcontrol"
+                    placeholder="고객명"/>
+                </div>
+                <div class="form-group mx-sm-1 mb-2">
+                    <select th:field="*{memberType}" class="form-control">
+                        <option value="">고객구분 : </option>
+                        <option th:each="memberType : ${T(hjkim.miniprj.domain.MemberType).values()}"
+                            th:value="${memberType}"
+                            th:text="${memberType}">option
+                        </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">조회</button>
+            </form>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>고객명</th>
+                <th>주소</th>
+                <th>회선수량</th>
+                <th>수정</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="member : ${members}">
+                <td th:text="${member.id}"></td>
+                <td th:text="${member.name}"></td>
+                <td th:text="${member.address?.city}+' '+${member.address?.street}+' '+${member.address?.zipcode}"></td>
+                <td th:text="${member.lineCount}"></td>
+                <td>
+                    <a href="#" th:href="@{/members/{id}/edit (id=${member.id})}"
+                    class="btn btn-primary" role="button">수정</a>
+                </td>
+            </tr>
+            </tbody>
+            </table>
+    </div>
+<div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>
