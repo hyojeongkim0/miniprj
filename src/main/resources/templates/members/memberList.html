@@ -10,28 +10,28 @@
                 <div class="form-group mb-2">
 
                     <input type="text" th:field="*{memberName}" class="formcontrol"
-                    placeholder="고객명"/>
+                    th:placeholder="#{member.name}"/>
                 </div>
                 <div class="form-group mx-sm-1 mb-2">
                     <select th:field="*{memberType}" class="form-control">
-                        <option value="">고객구분 : </option>
+                        <option value="" th:text="#{member.memberType} + ' : '" > 고객구분 : </option>
                         <option th:each="memberType : ${T(hjkim.miniprj.domain.MemberType).values()}"
                             th:value="${memberType}"
                             th:text="${memberType}">option
                         </option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary mb-2">조회</button>
+                <button type="submit" class="btn btn-primary mb-2" th:text="#{button.select}">조회</button>
             </form>
         </div>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>#</th>
-                <th>고객명</th>
-                <th>주소</th>
-                <th>회선수량</th>
-                <th>수정</th>
+                <th th:text="#{member.name}">고객명</th>
+                <th th:text="#{member.address}">주소</th>
+                <th th:text="#{member.lineCount}">회선수량</th>
+                <th th:text="#{button.update}">수정</th>
             </tr>
             </thead>
             <tbody>
@@ -42,7 +42,7 @@
                 <td th:text="${member.lineCount}"></td>
                 <td>
                     <a href="#" th:href="@{/members/{id}/edit (id=${member.id})}"
-                    class="btn btn-primary" role="button">수정</a>
+                    class="btn btn-primary" role="button" th:text="#{button.update}">수정</a>
                 </td>
             </tr>
             </tbody>

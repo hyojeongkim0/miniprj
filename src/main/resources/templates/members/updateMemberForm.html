@@ -48,54 +48,53 @@
         <form th:object="${form}" method="post">
             <input type="hidden" th:field="*{id}" />
 
-            <input type="hidden" th:field="*{id}" />
 
             <div class="form-group">
-                <label th:for="name">고객명 : </label>
-                <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="이름을 입력하세요"
+                <label th:for="name" th:text="#{member.name} + ' : '">고객명 : </label>
+                <input type="text" id="name" th:field="*{name}" class="form-control" th:placeholder="#{placeholder.name}"
                        th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">
                 <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect date</p>
             </div>
-
+            
             <div class="form-group">
-                <label th:for="memberType">고객구분 : </label>
+                <label th:for="memberType" th:text="#{member.memberType} + ' : '">고객구분 : </label>
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="option1" name="memberType"     value="PERSON" th:field="*{memberType}"
                         th:class="${#fields.hasErrors('memberType')}? 'custom-control-input fieldError' : 'custom-control-input'">
-                        <label class="custom-control-label" for="option1" >개인고객</label> 
+                        <label class="custom-control-label" for="option1" th:text="#{member.person}">개인고객</label> 
                     </div>  
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="option2" name="memberType"     value="COMPANY" th:field="*{memberType}"
                         th:class="${#fields.hasErrors('memberType')}? 'custom-control-input fieldError' : 'custom-control-input'">
-                        <label class="custom-control-label" for="option2">법인고객</label>
+                        <label class="custom-control-label" for="option2" th:text="#{member.company}">법인고객</label>
                     </div>
                     <p th:if="${#fields.hasErrors('memberType')}" th:errors="*{memberType}">Incorrect date</p>
             </div>
 
             <div class="form-group">
-                <label th:for="city">City : </label>
-                <input type="text" th:field="*{city}" class="form-control" placeholder="도시를 입력하세요"
+                <label th:for="city" th:text="#{member.city} + ' : '">City : </label>
+                <input type="text" th:field="*{city}" class="form-control" th:placeholder="#{placeholder.city}"
                 th:class="${#fields.hasErrors('city')}? 'form-control fieldError' : 'form-control'">
                 <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}">Incorrect date</p>
             </div>
 
             <div class="form-group">
-                <label th:for="street">Street : </label>
-                <input type="text" th:field="*{street}" class="form-control" placeholder="거리를 입력하세요"
+                <label th:for="street"  th:text="#{member.street} + ' : '">Street : </label>
+                <input type="text" th:field="*{street}" class="form-control" th:placeholder="#{placeholder.street}"
                 th:class="${#fields.hasErrors('street')}? 'form-control fieldError' : 'form-control'">
                 <p th:if="${#fields.hasErrors('street')}" th:errors="*{street}">Incorrect date</p>
             </div>
 
             <div class="form-group">
-                <label th:for="zipcode">Zipcode : </label>
-                <input type="text" th:field="*{zipcode}" class="form-control" placeholder="우편번호를 입력하세요"
+                <label th:for="zipcode" th:text="#{member.zipcode} + ' : '">Zipcode : </label>
+                <input type="text" th:field="*{zipcode}" class="form-control" th:placeholder="#{placeholder.zipcode}"
                 th:class="${#fields.hasErrors('zipcode')}? 'form-control fieldError' : 'form-control'">
                 <p th:if="${#fields.hasErrors('zipcode')}" th:errors="*{zipcode}">Incorrect date</p>
             </div>
 
             <div class="form-group">
-                <label th:for="lineCount">회선수량 : </label>
-                <input type="text" th:field="*{lineCount}" class="form-control" placeholder="회선수량을 입력하세요"
+                <label th:for="lineCount" th:text="#{member.lineCount} + ' : '">회선수량 : </label>
+                <input type="text" th:field="*{lineCount}" class="form-control" th:placeholder="#{placeholder.lineCount}"
                 th:class="${#fields.hasErrors('lineCount')}? 'form-control fieldError' : 'form-control'">
                 <p th:if="${#fields.hasErrors('lineCount')}" th:errors="*{lineCount}">Incorrect date</p>
             </div>
@@ -103,15 +102,15 @@
             <div id="person">
                 <!-- 개인고객 -->
                 <div class="form-group">
-                    <label th:for="rsdRegistNum">주민등록번호 : </label>
-                    <input type="text" th:field="*{rsdRegistNum}" class="form-control" placeholder="주민등록번호를 입력하세요"
+                    <label th:for="rsdRegistNum" th:text="#{member.rsdRegistNum} + ' : '">주민등록번호 : </label>
+                    <input type="text" th:field="*{rsdRegistNum}" class="form-control" th:placeholder="#{placeholder.rsdRegistNum}"
                     th:class="${#fields.hasErrors('rsdRegistNum')}? 'form-control fieldError' : 'form-control'">
                     <p th:if="${#fields.hasErrors('rsdRegistNum')}" th:errors="*{rsdRegistNum}">Incorrect date</p>
                 </div>
 
                 <div class="form-group" >
-                    <label th:for="handphone">휴대폰번호 : </label>
-                    <input type="text" th:field="*{handphone}" class="form-control" placeholder="휴대폰번호를 입력하세요"
+                    <label th:for="handphone" th:text="#{member.handphone} + ' : '">휴대폰번호 : </label>
+                    <input type="text" th:field="*{handphone}" class="form-control" th:placeholder="#{placeholder.handphone}"
                     th:class="${#fields.hasErrors('handphone')}? 'form-control fieldError' : 'form-control'">
                     <p th:if="${#fields.hasErrors('handphone')}" th:errors="*{handphone}">Incorrect date</p>
                 </div>
@@ -121,28 +120,29 @@
             <div id="company">
                 <!-- 법인 고객 -->
                 <div class="form-group" id>
-                    <label th:for="bizNum">사업자등록번호 : </label>
-                    <input type="text" th:field="*{bizNum}" class="form-control" placeholder="사업자등록번호를 입력하세요"
+                    <label th:for="bizNum" th:text="#{member.bizNum} + ' : '">사업자등록번호 : </label>
+                    <input type="text" th:field="*{bizNum}" class="form-control" th:placeholder="#{placeholder.bizNum}"
                     th:class="${#fields.hasErrors('bizNum')}? 'form-control fieldError' : 'form-control'">
                     <p th:if="${#fields.hasErrors('bizNum')}" th:errors="*{bizNum}">Incorrect date</p>
                 </div>
 
                 <div class="form-group">
-                    <label th:for="ceoName">대표자명 : </label>
-                    <input type="text" th:field="*{ceoName}" class="form-control" placeholder="대표자명을 입력하세요"
+                    <label th:for="ceoName" th:text="#{member.ceoName} + ' : '">대표자명 : </label>
+                    <input type="text" th:field="*{ceoName}" class="form-control" th:placeholder="#{placeholder.ceoName}"
                     th:class="${#fields.hasErrors('ceoName')}? 'form-control fieldError' : 'form-control'">
                     <p th:if="${#fields.hasErrors('ceoName')}" th:errors="*{ceoName}">Incorrect date</p>
                 </div>
 
                 <div class="form-group">
-                    <label th:for="officePhone">회사전화번호 : </label>
-                    <input type="text" th:field="*{officePhone}" class="form-control" placeholder="회사전화번호를 입력하세요"
+                    <label th:for="officePhone" th:text="#{member.officePhone} + ' : '">회사전화번호 : </label>
+                    <input type="text" th:field="*{officePhone}" class="form-control" th:placeholder="#{placeholder.officePhone}"
                     th:class="${#fields.hasErrors('officePhone')}? 'form-control fieldError' : 'form-control'">
                     <p th:if="${#fields.hasErrors('officePhone')}" th:errors="*{officePhone}">Incorrect date</p>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">저장</button>
+            <button type="submit" class="btn btn-primary" th:text="#{button.save}">저장</button>
+            
         </form>
     <br/>
     <div th:replace="fragments/footer :: footer" />

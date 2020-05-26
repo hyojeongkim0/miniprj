@@ -23,28 +23,41 @@ public class MemberService {
     @Transactional
     public Long join(Member member) {
         
-        validateDupRsdRegistNum(member); //주민등록번호 중복체크
-        validateDupBizNum(member); //사업자등록번호 중복체크
+       // validateDupRsdRegistNum(member, locale); //주민등록번호 중복체크
+       // validateDupBizNum(member, locale); //사업자등록번호 중복체크
 
         memberRepository.save(member);
         return member.getId();
     
     }
 
-    private void validateDupRsdRegistNum(Member member) {
+
+/*
+    @Autowired
+    private MessageSource messageSource;
+
+    
+    private void validateDupRsdRegistNum(Member member, Locale locale) {
         List<Member> findMembers = memberRepository.findByRsdRegistNum(member.getRsdRegistNum());
+
         if (!findMembers.isEmpty()) {
-        throw new IllegalStateException("이미 등록되어 있습니다.");
+            String message = messageSource.getMessage("dupCheck", null, locale);
+        throw new IllegalStateException(message);
         }
         }
 
-    private void validateDupBizNum(Member member) {
+    private void validateDupBizNum(Member member, Locale locale) {
         List<Member> findMembers = memberRepository.findByBizNum(member.getBizNum());
+
+
         if (!findMembers.isEmpty()) {
-        throw new IllegalStateException("이미 등록되어 있습니다.");
+            String message = messageSource.getMessage("dupCheck", null, locale);
+        throw new IllegalStateException(message);
         }
         }
     
+*/
+
 
     //조회 조건으로 회원 조회
     public List<Member> findMembers(MemberSearch memberSearch) {

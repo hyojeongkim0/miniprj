@@ -7,7 +7,6 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import hjkim.miniprj.domain.Address;
 import hjkim.miniprj.domain.Member;
 import hjkim.miniprj.domain.MemberSearch;
+import hjkim.miniprj.repository.MemberRepository;
 import hjkim.miniprj.service.MemberService;
 import lombok.RequiredArgsConstructor;
 
@@ -26,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class MemberController {
     
     private final MemberService memberService;
+    private final MemberRepository memberRepository;
 
     @GetMapping("/members/new")
     public String createForm(Model model) {
@@ -54,6 +55,21 @@ public class MemberController {
         member.setOfficePhone(form.getOfficePhone());
 
         new MemberValidator().validate(member, result);
+        
+
+        if ((member.getRsdRegistNum() !=null && !member.getRsdRegistNum().equals(""))) {
+            List<Member> findMembers = memberRepository.findByRsdRegistNum(member.getRsdRegistNum());
+            if (!findMembers.isEmpty()) {
+                result.rejectValue("rsdRegistNum", "dupCheck");
+            }
+        }
+
+        if ((member.getBizNum() !=null && !member.getBizNum().equals(""))) {
+            List<Member> findMembers = memberRepository.findByBizNum(member.getBizNum());
+            if (!findMembers.isEmpty()) {
+                result.rejectValue("bizNum", "dupCheck");
+            }
+        }
 
         if (result.hasErrors()) {
             return "members/createMemberForm";

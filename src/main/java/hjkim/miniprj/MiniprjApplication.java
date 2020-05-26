@@ -9,5 +9,5 @@ public class MiniprjApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MiniprjApplication.class, args);
 	}
-
+	
 }

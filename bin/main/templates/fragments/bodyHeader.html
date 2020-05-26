@@ -4,5 +4,13 @@
 <ul class="nav nav-pills pull-right">
 <li><a href="/">Home</a></li>
 </ul>
-<a href="/"><h3 class="text-muted">장애 관리 시스템</h3></a>
+<div>
+  <a th:href="@{~/(lang=ko)}" href="/?lang=ko">
+    <button th:text="#{lang.ko}"></button>
+  </a>
+  <a th:href="@{~/(lang=en)}" href="/?lang=en">
+    <button th:text="#{lang.en}"></button>
+  </a>
+</div>
+<a href="/"><h3 class="text-muted" th:text="#{com.systemName}"></h3></a>
 </div>

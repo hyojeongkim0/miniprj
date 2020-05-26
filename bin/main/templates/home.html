@@ -65,10 +65,10 @@
         <div id="sidebar-wrapper">
           <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <a href="/"> 고객 관리 </a>
+                <a href="/" th:text="#{menu.custmgt}"> 고객 관리 </a>
             </li>
-            <li><a href="/members/new">고객 등록</a></li>
-            <li><a href="/members">고객 조회</a></li>
+            <li><a href="/members/new" th:text="#{menu.custSave}">고객 등록</a></li>
+            <li><a href="/members" th:text="#{menu.custSelect}">고객 조회</a></li>
 
           </ul>
         </div>
@@ -77,7 +77,7 @@
         <!-- 본문 -->
         <div id="page-content-wrapper">
           <div class="container-fluid">
-            <h1>장애 관리 시스템</h1>
+            <h1 th:text="#{com.systemName}"></h1>
             
           </div>
         </div>

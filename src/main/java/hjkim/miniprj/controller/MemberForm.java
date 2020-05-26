@@ -10,18 +10,18 @@ import lombok.Setter;
 @Setter
 public class MemberForm {
 
-    @NotEmpty(message = "필수 입니다.")
+    @NotEmpty   //(message = "필수 입니다.")
     private String name;
 
     private MemberType memberType;
 
-    @NotEmpty(message = "필수 입니다.")
+    @NotEmpty   //(message = "필수 입니다.")
     private String city;
 
-    @NotEmpty(message = "필수 입니다.")
+    @NotEmpty   //(message = "필수 입니다.")
     private String street;
 
-    @NotEmpty(message = "필수 입니다.")
+    @NotEmpty   //(message = "필수 입니다.")
     private String zipcode;
 
     private Integer lineCount;
